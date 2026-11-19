@@ -1,0 +1,11 @@
+Project: "Care Rota" - independent demo inspired by the problem space of Cova (YC S26), software for home care agencies. NOT affiliated; footer says so.
+
+Concept: an operations board for a fictional home care agency ("Demo Care Agency"):
+- ~10-12 synthetic visits across one day for fictional clients and caregivers: time window, caregiver, client, status (completed, in progress, upcoming, missed risk).
+- Deterministic attention rules with visible fixed thresholds: LATE RISK (visit starts within 30 min, caregiver not yet en route per synthetic data), GAP (caregiver has >90 min between consecutive visits), UNCOVERED (no caregiver assigned).
+- Clicking a visit shows a synthetic visit detail: tasks checklist, caregiver note samples (clearly marked synthetic), and status history.
+- A caregiver-day timeline panel per fictional caregiver showing their route through the day.
+- Small stats strip: visits covered %, avg gap minutes, completed count - computed from the synthetic data, labeled sample stats.
+Honesty bar: header badge "Sample data - demo"; copy states all clients/caregivers/visits are synthetic and rules are fixed-threshold illustrations, not a care-management product; footer: "Independent demo built by Vinil Polepalli. Not affiliated with or endorsed by Cova."
+UI: dark sleek, distinct accent FUCHSIA/magenta (#d946ef family - not rose/violet/indigo; clearly magenta).
+Tech: Next.js static export (output:'export'), npm run build must pass, no runtime external calls. Write SPEC.md first, then slices. No git commit, no deploy.

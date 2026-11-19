@@ -1,1 +1,10 @@
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+*.db
+*.db-shm
+*.db-wal
 .vercel
+.env*

@@ -1,0 +1,17 @@
+The Care Rota demo is built, and `npm run build` passes with a static export to `out/`. I haven't opened it in a browser, so the layout at 390px and on desktop is untested. I only checked that the exported HTML contains the badge, the footer text and the rule flags, and that it makes no external calls.
+
+I wrote `SPEC.md` first, then built the slices in order.
+
+- **Data (`lib/data.ts`):** 12 synthetic visits across 5 caregivers, with one unassigned visit. The demo clock is fixed at 10:15 and shown in the header.
+- **Rules (`lib/rules.ts`):** thresholds are fixed and listed in the UI.
+  - **LATE RISK:** a visit hasn't started, starts within 30 minutes (or is already past its start), and the caregiver isn't en route.
+  - **GAP:** more than 90 minutes between a caregiver's consecutive visits. The flag goes on the later visit.
+  - **UNCOVERED:** no caregiver assigned.
+- **Day board:** visits are sorted by time with status pills for completed, in progress, upcoming and missed risk, plus flag chips and filters. I defined "missed risk" as an upcoming visit that triggers LATE RISK; it's not stored in the data.
+- **Visit detail:** a checklist, caregiver notes tagged "Synthetic", and a status history. Where a rule fired, it says why.
+- **Caregiver timeline:** one row per caregiver from 07:00 to 19:00, with visit blocks and a "now" line. Gaps over 90 minutes show as dashed bars with the minutes. Clicking a block opens that visit.
+- **Stats strip:** labeled "sample stats", all computed from the data: 92% of visits covered, average gap 90 minutes, and 3 of 12 visits completed.
+- **UI:** dark with a fuchsia (`#d946ef`) accent. The layout switches to a single column below 860px and tightens further below 560px.
+- **Honesty copy:** the "Sample data - demo" badge, the synthetic and fixed-threshold notice, and your required footer line are all in.
+
+The 390px timeline scrolls sideways inside its own panel rather than shrinking. There's no git commit and no deploy. Run `npm run dev` to look at it locally.
